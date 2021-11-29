@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ru" id="html">
+<head>
+    <title>JS TEST</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="assets/img/favicon/site.webmanifest">
+
+</head>
+
+<style>
+    .custom-separator {
+        width: 10px;
+    }
+    .custom-separator:before {
+        content: '::';
+        width: 20px;
+        height: 40px;
+        position: absolute;
+        background-color: #fff;
+        border-radius: 6px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        line-height: 100%;
+    }
+
+
+
+    .separator-custom-inner .span1,
+    .separator-custom-inner .span2,
+    .separator-custom-inner .span3 {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        display: block;
+    }
+    .separator-custom-inner .span1 {
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+        border-right: 10px solid #333;
+        transform: translate(-200%,-50%);
+    }
+    .separator-custom-inner .span2 {
+        width: 20px;
+        height: 10px;
+        background-color: #333;
+        transform: translate(-50%,-50%);
+    }
+    .separator-custom-inner .span3 {
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+        border-left: 10px solid #333;
+        transform: translate(100%,-50%);
+    }
+</style>
+
+<body>
+
+<header></header>
+
+<main>
+    <section>
+        <h1>
+            JS TEST
+        </h1>
+
+        <div>
+            <div id="beforeAfterContainer"
+                 data-before="./img/ba-1-1.jpg"
+                 data-after="./img/ba-1-2.jpg">
+            </div>
+        </div>
+
+        <div>
+            <div style="max-height: 540px; max-width: 960px" id="ba2"
+                 data-before="./img/ba-2-1.jpg"
+                 data-after="./img/ba-2-2.jpg">
+            </div>
+
+        </div>
+
+        <div>
+            <div class="ba-test"
+                 data-before="./img/ba-5-1.jpg"
+                 data-after="./img/ba-5-2.jpg">
+            </div>
+
+        </div>
+
+        <div style="height: 540px; width: 960px">
+            <div id="ba3"
+                 data-before="./img/ba-3-1.jpg"
+                 data-after="./img/ba-3-2.jpg">
+            </div>
+
+        </div>
+
+        <div style="height: 540px; width: 960px">
+            <div id="ba4"
+                 data-before="./img/ba-4-1.gif"
+                 data-after="./img/ba-4-2.gif">
+            </div>
+
+        </div>
+
+    </section>
+</main>
+
+<footer></footer>
+<script src="dist/js/before-after.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+
+    function onCb() {
+        console.log('destroy listener');
+    }
+
+    var ba1 = new BeforeAfter({
+        'separator': {
+            'class': 'custom-separator',
+        },
+        'container': '#beforeAfterContainer',
+        'className': 'test-container-css-name',
+        'freePosition': true,
+        'direction': 'diagonal',
+    });
+    ba1.test()
+    // ba1.on('destroy', onCb);
+    // setTimeout(function() {
+    //     ba1.destroy();
+    // }, 3000);
+
+    var ba2 = new BeforeAfter({
+        'container': '#ba2',
+        'className': 'test-container-css-name',
+        'freePosition': true,
+        'init': false,
+        'direction': 'horizontal',
+        // 'breakpoints': {
+        //     0: {
+        //
+        //     }
+        // }
+    });
+    ba2.init();
+
+    var separatorInnerHTML = "<span class=\"span1\"></span><span class=\"span2\"></span><span class=\"span3\"></span>";
+
+    var ba3 = new BeforeAfter({
+        'container': '#ba3',
+        'className': 'test-container-css-name',
+        'separator': {
+            'class': 'separator-custom-inner',
+            'innerHTML': separatorInnerHTML,
+        },
+    });
+
+    var ba4 = new BeforeAfter({
+        'container': '#ba4',
+        'className': 'test-container-css-name',
+    });
+
+    Array.prototype.slice.call(document.querySelectorAll('.ba-test')).forEach(function(el) {
+        const slider = new BeforeAfter({
+            'container': el,
+            'className': 'test-container-css-name',
+        });
+    })
+
+    //
+    // const ids = [];
+    // for(let i = 0; i < 1000; i++) {
+    //     ids.push(`bAfter${i}`);
+    // }
+    //
+    // ids.forEach(id => {
+    //     const el = document.createElement('DIV');
+    //     el.id = id;
+    //     document.querySelector('body').append(el);
+    //     el.setAttribute('data-before','./img/ba-3-1.jpg');
+    //     el.setAttribute('data-after','./img/ba-3-2.jpg');
+    //
+    //     const slider = new BeforeAfter({
+    //         'container': `#${id}`,
+    //         'test': 'test',
+    //     });
+    // })
+
+})
+</script>
+
+</body>
+
+</html>

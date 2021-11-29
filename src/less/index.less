@@ -1,0 +1,117 @@
+.stop-scroll {
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+}
+img {
+    vertical-align: middle;
+}
+.before-after {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    user-select: none;
+    &-wrapper-before,
+    &-wrapper-after,
+    &-element-after {
+        pointer-events: none;
+    }
+    &-wrapper-before {
+        width: 50%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        overflow: hidden;
+        left: 0;
+        z-index: 2;
+        & img {
+            height: 100%;
+        }
+    }
+    &-element-after {
+        width: 100%;
+        height: 100%;
+    }
+    &-wrapper-after {
+        //width: 100%;
+        //height: 100%;
+        & img {
+            width: 100%;
+        }
+    }
+    &-separator {
+        width: 10px;
+        height: 100%;
+        transform: translateX(-50%);
+        background-color: #333333;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 3;
+        transition: opacity .4s linear;
+        &.before-after-active-separator {
+            opacity: 0;
+            transition: opacity .4s linear;
+        }
+    }
+    &.horizontal {
+        & .before-after-wrapper-before {
+            width: 100%;
+            height: 50%;
+            & img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+        & .before-after-separator {
+            width: 100%;
+            height: 10px;
+            transform: translateY(-50%);
+            background-color: #333333;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 3;
+            transition: opacity .4s linear;
+            &.before-after-active-separator {
+                opacity: 0;
+                transition: opacity .4s linear;
+            }
+        }
+    }
+    &.diagonal {
+        & .before-after-separator {
+            width: 100%;
+            height: 10px;
+            transform: translate(-50%,-50%) ;
+            background-color: #333333;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 3;
+            transition: opacity .4s linear;
+            &.before-after-active-separator {
+                opacity: 0;
+                transition: opacity .4s linear;
+            }
+        }
+    }
+    //&.square {
+    //    & .before-after-separator {
+    //        width: 50%;
+    //        height: 10px;
+    //        transform: translateY(-50%);
+    //        background-color: #333333;
+    //        position: absolute;
+    //        top: 50%;
+    //        left: 0;
+    //        z-index: 3;
+    //        transition: opacity .4s linear;
+    //        &.before-after-active-separator {
+    //            opacity: 1;
+    //            transition: opacity .4s linear;
+    //        }
+    //    }
+    //}
+}
