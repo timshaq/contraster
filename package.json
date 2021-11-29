@@ -6,7 +6,7 @@
   "scripts": {
     "build:dev": "cross-env NODE_ENV=development webpack",
     "build:prod": "cross-env NODE_ENV=production webpack",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "cypress open"
   },
   "author": "timshaq",
   "license": "ISC",
@@ -17,6 +17,7 @@
     "babel-preset-env": "^1.7.0",
     "cross-env": "^7.0.3",
     "css-loader": "^6.5.1",
+    "cypress": "^9.1.0",
     "less": "^4.1.2",
     "less-loader": "^10.2.0",
     "path": "^0.12.7",
