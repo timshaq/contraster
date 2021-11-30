@@ -1,11 +1,7 @@
 function DocumentEmitter() {
     var $ = this;
 
-    $.lastTop = null;
     $.isContainerMove = false;
-    $.setTopScroll = function() {
-        window.scrollTo(0,$.lastTop);
-    }
     $.setContainerMove = function(val) {
         $.isContainerMove = val;
     }
@@ -44,7 +40,6 @@ function DocumentEmitter() {
         $.emit('resize');
     }
     function mouseup(event) {
-        $.lastTop = null;
         $.isContainerMove = false;
         $.emit('mouseup', event);
     }
@@ -52,7 +47,7 @@ function DocumentEmitter() {
         $.emit('mousedown', event);
     }
     function mousemove(event) {
-        onscroll();
+        // onscroll();
         $.emit('mousemove', event);
     }
     document.addEventListener('mousedown', mousedown);
@@ -65,15 +60,10 @@ function DocumentEmitter() {
     document.addEventListener('touchmove', mousemove);
 
     function onscroll(event) {
-        if($.isContainerMove) {
-            window.scrollTo(0,$.lastTop);
-        } else {
-            $.lastTop = window.scrollY;
-        }
-        // $.emit('onscroll', event);
+        return ($.isContainerMove) ? event.preventDefault() : false;
     }
 
-    window.addEventListener('scroll', onscroll);
+    window.addEventListener('touchmove', onscroll, { passive: false });
 
     window.addEventListener('resize', resize);
 }

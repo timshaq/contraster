@@ -1,8 +1,6 @@
-import DocumentEmitter from './document-emitter';
 import buildOut from './buildOut';
 import {SEPARATOR_ACTIVE_CLASS_NAME} from "./css-names";
 import sendError from "./helpers/sendError";
-import enableScroll from "./helpers/enableScroll";
 import setSizes from "./helpers/setSizes";
 import mouseMoveHandler from "./event-handlers/mouseMoveHandler";
 import extendDefaults from "./helpers/extendDefaults";
@@ -52,7 +50,6 @@ function BeforeAfter() {
     }
     function mouseUpHandler(event) {
         console.log('up')
-        enableScroll();
         $doc.removeOn('mousemove', mouseMoveHandlerBind);
         $.separator.classList.remove($.options.separator.activeClass);
     }

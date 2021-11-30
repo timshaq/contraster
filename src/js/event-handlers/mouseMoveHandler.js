@@ -3,10 +3,6 @@ import $doc from '../document-emitter';
 
 function mouseMoveHandler(event) {
     if(event.touches) {
-        disableScroll();
-        this.container.style.pointerEvents = 'auto';
-
-        // $doc.setTopScroll();
         $doc.setContainerMove(true);
     }
     let top = this.container.offsetTop;

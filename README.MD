@@ -1,7 +1,6 @@
 #BeforeAfter
-##Feature:
+##Need:
 * not found image - destroy
-* touch support
 * scroll disable - ?
 * breakpoints
 * startSeparatorPosition
@@ -10,3 +9,7 @@
 * light gallery
 * mouseWheel - ?
 * video - ?
+* synchronous movement
+
+##Finished:
+* touch support: disable scroll when slider active
