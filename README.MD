@@ -1,5 +1,5 @@
-#BeforeAfter
-##Need:
+# BeforeAfter
+## Need:
 * breakpoints
 * startSeparatorPosition
 * autoSlide
@@ -10,7 +10,7 @@
 * synchronous movement
 * cursor grab
 
-##Finished:
+## Finished:
 * touch support: disable scroll when slider active
 * not found image - destroy
 * only left click
