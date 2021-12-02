@@ -38,14 +38,16 @@ function BeforeAfter() {
 
     function mouseDownHandler(event) {
         console.log('down')
-        const isSeparatorChildren = $.separatorChildren && $.separatorChildren.includes(event.target);
-        if($.options.freePosition) {
-            if(event.target === $.container || isSeparatorChildren || event.target === $.separator) {
-                mouseMoveHandlerBind(event)
+        if(event.buttons === 1 || event.touches) {
+            const isSeparatorChildren = $.separatorChildren && $.separatorChildren.includes(event.target);
+            if($.options.freePosition) {
+                if(event.target === $.container || isSeparatorChildren || event.target === $.separator) {
+                    mouseMoveHandlerBind(event)
+                    $doc.on('mousemove', mouseMoveHandlerBind);
+                }
+            } else if(event.target === $.separator || isSeparatorChildren ) {
                 $doc.on('mousemove', mouseMoveHandlerBind);
             }
-        } else if(event.target === $.separator || isSeparatorChildren ) {
-            $doc.on('mousemove', mouseMoveHandlerBind);
         }
     }
     function mouseUpHandler(event) {

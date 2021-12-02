@@ -1,6 +1,5 @@
 #BeforeAfter
 ##Need:
-* scroll disable - ?
 * breakpoints
 * startSeparatorPosition
 * autoSlide
@@ -10,8 +9,8 @@
 * video - ?
 * synchronous movement
 * cursor grab
-* only left click
 
 ##Finished:
 * touch support: disable scroll when slider active
 * not found image - destroy
+* only left click
