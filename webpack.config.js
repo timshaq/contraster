@@ -4,6 +4,7 @@ const path = require('path');
 const NODE_ENV = process.env.NODE_ENV;
 const IS_DEV = NODE_ENV === 'development';
 module.exports = {
+    target: 'es5',
     mode: NODE_ENV ? NODE_ENV : 'development',
     watch: IS_DEV,
     entry: path.resolve(__dirname,'src/js/index.js'),
@@ -14,6 +15,7 @@ module.exports = {
         libraryTarget: "umd",
         libraryExport: "default",
         umdNamedDefine: true,
+        chunkFormat: 'commonjs'
         // globalObject: `(typeof self !== 'undefined' ? self : this)`
     },
     module: {

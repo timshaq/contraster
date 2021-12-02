@@ -14,3 +14,4 @@
 * touch support: disable scroll when slider active
 * not found image - destroy
 * only left click
+* IE11 support
