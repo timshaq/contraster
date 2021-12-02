@@ -23,7 +23,7 @@ function getContainerClassName() {
     }
 }
 
-function build(resolve) {
+function build(resolve, reject) {
     this.container = getElement(this.options.container) || false;
     if(this.container) {
 
@@ -55,16 +55,28 @@ function build(resolve) {
 
         const imgs = [this.beforeElement,this.afterElement];
         imgs.forEach(img => {
-            function onResolve() {
-                img.removeEventListener('load',onLoadBind)
-                this.emit('buildOut');
-                resolve();
+            function onResolve(response) {
+                if(response) {
+                    img.removeEventListener('load',onLoadBind);
+                    this.emit('buildOut');
+                    resolve();
+                } else {
+                    img.removeEventListener('error',onErrorBind);
+                    this.emit('buildOut');
+                    reject(img.src);
+                }
             }
             function onLoad() {
-                if(checkComplete(imgs)) onResolve.call(this);
+                if(checkComplete(imgs)) onResolve.call(this, true);
+            }
+            function onError() {
+                onResolve.call(this, false);
             }
             var onLoadBind = onLoad.bind(this);
-            img.addEventListener('load',onLoadBind)
+            img.addEventListener('load', onLoadBind)
+
+            var onErrorBind = onError.bind(this);
+            img.addEventListener('error', onErrorBind)
         })
     }
 }

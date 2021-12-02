@@ -56,14 +56,19 @@ function BeforeAfter() {
 
     this.init = function() {
 
-        buildOut.call($).then(() => {
-            if(!$.container) return sendError('container not found');
-            setSizes.call($);
+        buildOut.call($)
+            .then(() => {
+                if(!$.container) return sendError('container not found');
+                setSizes.call($);
 
-            $doc.on('mousedown', mouseDownHandler);
-            $doc.on('mouseup', mouseUpHandler);
-            $doc.on('resize', setSizes.bind($));
-        })
+                $doc.on('mousedown', mouseDownHandler);
+                $doc.on('mouseup', mouseUpHandler);
+                $doc.on('resize', setSizes.bind($));
+            })
+            .catch((src) => {
+                this.destroy();
+                return sendError(src + ' image unable to download');
+            })
     }
 
     this.destroy = function() {
