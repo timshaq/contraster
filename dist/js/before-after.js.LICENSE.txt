@@ -1,6 +1,0 @@
-/**
- * ChildNode.append() polyfill
- * https://gomakethings.com/adding-an-element-to-the-end-of-a-set-of-elements-with-vanilla-javascript/
- * @author Chris Ferdinandi
- * @license MIT
- */

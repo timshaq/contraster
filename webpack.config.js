@@ -7,16 +7,18 @@ module.exports = {
     target: 'es5',
     mode: NODE_ENV ? NODE_ENV : 'development',
     watch: IS_DEV,
-    entry: path.resolve(__dirname,'src/js/index.js'),
+    entry: {
+        "before-after": path.resolve(__dirname,'src/js/index.js'),
+        "before-after-ie11": path.resolve(__dirname,'src/js/index.ie11.js')
+    },
     output: {
         path: path.resolve(__dirname,'dist/js'),
-        filename: 'before-after.js',
+        filename: '[name].min.js',
         library: 'BeforeAfter',
         libraryTarget: "umd",
         libraryExport: "default",
         umdNamedDefine: true,
         chunkFormat: 'commonjs'
-        // globalObject: `(typeof self !== 'undefined' ? self : this)`
     },
     module: {
         rules: [
@@ -37,9 +39,4 @@ module.exports = {
             },
         ]
     }
-    // resolve: {
-    //     extensions: ['.js'],
-    //     modules: [path.resolve(__dirname, 'src')],
-    // },
-    // devtool: 'source-map'
 }
