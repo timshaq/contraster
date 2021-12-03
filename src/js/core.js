@@ -2,9 +2,14 @@ import buildOut from './buildOut';
 import {SEPARATOR_ACTIVE_CLASS_NAME} from "./css-names";
 import sendError from "./helpers/sendError";
 import setSizes from "./helpers/setSizes";
+
 import mouseMoveHandler from "./event-handlers/mouseMoveHandler";
+import mouseDownHandler from "./event-handlers/mouseDownHandler";
+import mouseUpHandler from "./event-handlers/mouseUpHandler";
+
 import extendDefaults from "./helpers/extendDefaults";
 import $doc from './document-emitter';
+import * as emitter from "./public/event-emitter";
 
 function BeforeAfter() {
     this.container = null;
@@ -12,7 +17,7 @@ function BeforeAfter() {
     this.beforeWrapper = null;
     this.afterWrapper = null;
 
-    this.separatorElement = null;
+    this.separator = null;
     this.separatorChildren = null;
 
     this.mouseScreenX = null;
@@ -21,12 +26,13 @@ function BeforeAfter() {
 
     const defaults = {
         direction: 'vertical',
-        test: true,
         freePosition: false,
         init: true,
         separator: {
             activeClass: SEPARATOR_ACTIVE_CLASS_NAME,
         },
+        cursorGrab: false,
+        className: false,
     };
 
     if (arguments[0] && typeof arguments[0] === "object") {
@@ -35,36 +41,19 @@ function BeforeAfter() {
 
     const mouseMoveHandlerBind = mouseMoveHandler.bind(this);
     const $ = this;
-
-    function mouseDownHandler(event) {
-        console.log('down')
-        if(event.buttons === 1 || event.touches) {
-            const isSeparatorChildren = $.separatorChildren && $.separatorChildren.includes(event.target);
-            if($.options.freePosition) {
-                if(event.target === $.container || isSeparatorChildren || event.target === $.separator) {
-                    mouseMoveHandlerBind(event)
-                    $doc.on('mousemove', mouseMoveHandlerBind);
-                }
-            } else if(event.target === $.separator || isSeparatorChildren ) {
-                $doc.on('mousemove', mouseMoveHandlerBind);
-            }
-        }
-    }
-    function mouseUpHandler(event) {
-        console.log('up')
-        $doc.removeOn('mousemove', mouseMoveHandlerBind);
-        $.separator.classList.remove($.options.separator.activeClass);
-    }
+    const mouseDownHandlerBind = (event) => mouseDownHandler($, mouseMoveHandlerBind, event)
+    const mouseUpHandlerBind = (event) => mouseUpHandler($, mouseMoveHandlerBind, event)
 
     this.init = function() {
 
         buildOut.call($)
             .then(() => {
                 if(!$.container) return sendError('container not found');
+                this.emit('buildOut');
                 setSizes.call($);
 
-                $doc.on('mousedown', mouseDownHandler);
-                $doc.on('mouseup', mouseUpHandler);
+                $doc.on('mousedown', mouseDownHandlerBind);
+                $doc.on('mouseup', mouseUpHandlerBind);
                 $doc.on('resize', setSizes.bind($));
             })
             .catch((src) => {
@@ -77,8 +66,8 @@ function BeforeAfter() {
         if($.container) {
             $.container.innerHTML = '';
             $.container.removeAttribute('class');
-            $doc.removeOn('mousedown', mouseDownHandler);
-            $doc.removeOn('mouseup', mouseUpHandler);
+            $doc.removeOn('mousedown', mouseDownHandlerBind);
+            $doc.removeOn('mouseup', mouseUpHandlerBind);
             $doc.removeOn('resize', setSizes.bind($));
         }
         $.emit('destroy');
@@ -89,35 +78,8 @@ function BeforeAfter() {
 }
 
 // emmitter
-BeforeAfter.prototype.on = function(name, listener) {
-    if (!this.eventsListeners[name]) {
-        this.eventsListeners[name] = [];
-    }
-
-    this.eventsListeners[name].push(listener);
-}
-BeforeAfter.prototype.removeOn = function(name, listenerToRemove) {
-    if (!this.eventsListeners[name]) {
-        return sendError("Can't remove a listener. Event \"" + name + "\" doesn't exits.");
-    }
-
-    function filterListeners(listener) {
-        return listener !== listenerToRemove;
-    }
-
-    this.eventsListeners[name] = this.eventsListeners[name].filter(filterListeners);
-}
-BeforeAfter.prototype.emit = function(name, data) {
-    if (!this.eventsListeners[name]) return;
-
-    function fireCallbacks(callback){
-        callback(data);
-    }
-
-    this.eventsListeners[name].forEach(fireCallbacks);
-}
-BeforeAfter.prototype.test = function(name, listener) {
-    console.log(this.options)
-}
+BeforeAfter.prototype.on = emitter.on;
+BeforeAfter.prototype.removeOn = emitter.removeOn;
+BeforeAfter.prototype.emit = emitter.emit;
 
 export default BeforeAfter;

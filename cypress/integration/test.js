@@ -78,21 +78,21 @@ describe('Default Horizontal Test', () => {
         defaultHorizontalSetSize(names)
     })
 
-    it('freePosition: false', () => {
-        cy.get(`${names.container}`).invoke('outerHeight').then((sliderHeight) => {
-            sliderHeight = round(sliderHeight);
-            cy.get(`${names.container} ${names.separator}`).invoke('css', 'top').then((top) => {
-                const separatorStartTop = parseFloat(top);
-                cy.get(`${names.container}`).invoke('outerHeight').then((sliderHeight) => {
-                    const step = sliderHeight / 10; // 10 percent
-
-                    recursClicks('before', 0, separatorStartTop, step);
-
-                    recursClicks('after', separatorStartTop + 6, separatorStartTop, step, sliderHeight);
-                })
-            });
-        });
-    })
+    // it('freePosition: false', () => {
+    //     cy.get(`${names.container}`).invoke('outerHeight').then((sliderHeight) => {
+    //         sliderHeight = round(sliderHeight);
+    //         cy.get(`${names.container} ${names.separator}`).invoke('css', 'top').then((top) => {
+    //             const separatorStartTop = parseFloat(top);
+    //             cy.get(`${names.container}`).invoke('outerHeight').then((sliderHeight) => {
+    //                 const step = sliderHeight / 10; // 10 percent
+    //
+    //                 recursClicks('before', 0, separatorStartTop, step);
+    //
+    //                 recursClicks('after', separatorStartTop + 6, separatorStartTop, step, sliderHeight);
+    //             })
+    //         });
+    //     });
+    // })
 
     it('separatorMove', () => {
         cy.get(`${names.container}`).then(container => {
@@ -109,8 +109,8 @@ describe('Default Horizontal Test', () => {
                     if(y < maxY) {
                         cy.get(`${names.container} ${names.separator}`)
                             .trigger('mouseenter', x, separatorSelfY)
-                            .trigger('mousedown', { which: 1, pageX: x, pageY: y + 1, force: true} )
-                            .trigger('mousemove', { pageX: x, pageY: y, force: true} )
+                            .trigger('mousedown', { which: 1, button: 0, pageX: x, pageY: y + 1, force: true} )
+                            .trigger('mousemove', { button: 0, pageX: x, pageY: y, force: true} )
                             .trigger('mouseup', { force: true } );
 
                         cy.get(`${names.container} ${names.separator}`)

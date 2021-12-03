@@ -113,7 +113,10 @@ document.addEventListener('DOMContentLoaded', function(){
     var horizontal = new BeforeAfter({
         container: '#horizontal',
         direction: 'horizontal',
+        cursorGrab: true,
     });
+    horizontal.on('buildOut', () => console.log('buildOut'))
+
 
     var diagonal = new BeforeAfter({
         'separator': {
@@ -129,6 +132,7 @@ document.addEventListener('DOMContentLoaded', function(){
         'className': 'test-container-css-name',
         'direction': 'vertical'
     });
+    vertical.on('destroy', () => console.log('destroy'))
 
     var separatorInnerHTML = "<span class=\"span1\"></span><span class=\"span2\"></span><span class=\"span3\"></span>";
 

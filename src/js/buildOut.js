@@ -55,14 +55,13 @@ function build(resolve, reject) {
 
         const imgs = [this.beforeElement,this.afterElement];
         imgs.forEach(img => {
+            // run several times - why?
             function onResolve(response) {
                 if(response) {
                     img.removeEventListener('load',onLoadBind);
-                    this.emit('buildOut');
                     resolve();
                 } else {
                     img.removeEventListener('error',onErrorBind);
-                    this.emit('buildOut');
                     reject(img.src);
                 }
             }

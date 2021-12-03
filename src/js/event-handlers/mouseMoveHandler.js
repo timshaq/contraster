@@ -38,13 +38,13 @@ function mouseMoveHandler(event) {
         }
     }
     if(this.options.direction === 'horizontal') {
-        console.log(posY)
+        // console.log(posY)
 
         this.separator.classList.add(this.options.separator.activeClass);
         if(posY > 0) {
-            console.log('posY > 0')
+            // console.log('posY > 0')
             if(posY < this.container.offsetHeight) {
-                console.log('posY < this.container.offsetHeight')
+                // console.log('posY < this.container.offsetHeight')
                 this.beforeWrapper.style.cssText = `height: ${posY}px;`;
                 this.separator.style.cssText = `top: ${posY}px;`;
             } else {
@@ -52,7 +52,7 @@ function mouseMoveHandler(event) {
                 this.separator.style.cssText = `top: ${this.container.offsetHeight}px;`;
             }
         } else {
-            console.log('posY < 0')
+            // console.log('posY < 0')
             this.beforeWrapper.style.cssText = 'height: 0px;';
             this.separator.style.cssText = 'top: 0px;';
         }
