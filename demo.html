@@ -88,6 +88,13 @@
         </div>
 
         <div>
+            <div id="nullImgTest"
+                 data-before="./img/ba-2-1.jpg"
+                 data-after="./img/ba-2-2.jpg">
+            </div>
+        </div>
+
+        <div>
             <div id="vertical"
                  data-before="./img/ba-2-1asd.jpg"
                  data-after="./img/ba-2-2.jpg">
@@ -115,7 +122,13 @@ document.addEventListener('DOMContentLoaded', function(){
         direction: 'horizontal',
         cursorGrab: true,
     });
-    horizontal.on('buildOut', () => console.log('buildOut'))
+    // horizontal.on('buildOut', () => console.log('buildOut'))
+
+    var horizontal = new BeforeAfter({
+        container: '#test',
+        direction: 'horizontal',
+        cursorGrab: true,
+    });
 
 
     var diagonal = new BeforeAfter({
@@ -130,20 +143,21 @@ document.addEventListener('DOMContentLoaded', function(){
     var vertical = new BeforeAfter({
         'container': '#vertical',
         'className': 'test-container-css-name',
-        'direction': 'vertical'
+        'direction': 'vertical',
+        debug: true
     });
-    vertical.on('destroy', () => console.log('destroy'))
+    // vertical.on('destroy', () => console.log('destroy'))
 
     var separatorInnerHTML = "<span class=\"span1\"></span><span class=\"span2\"></span><span class=\"span3\"></span>";
 
-    var ba3 = new BeforeAfter({
-        'container': '#ba3',
-        'className': 'test-container-css-name',
-        'separator': {
-            'class': 'separator-custom-inner',
-            'innerHTML': separatorInnerHTML,
-        },
-    });
+    // var ba3 = new BeforeAfter({
+    //     'container': '#ba3',
+    //     'className': 'test-container-css-name',
+    //     'separator': {
+    //         'class': 'separator-custom-inner',
+    //         'innerHTML': separatorInnerHTML,
+    //     },
+    // });
 
 })
 </script>

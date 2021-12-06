@@ -1,6 +1,5 @@
 import buildOut from './buildOut';
 import {SEPARATOR_ACTIVE_CLASS_NAME} from "./css-names";
-import sendError from "./helpers/sendError";
 import setSizes from "./helpers/setSizes";
 
 import mouseMoveHandler from "./event-handlers/mouseMoveHandler";
@@ -48,17 +47,19 @@ function BeforeAfter() {
 
         buildOut.call($)
             .then(() => {
-                if(!$.container) return sendError('container not found');
+                if(!$.container) return;
                 this.emit('buildOut');
                 setSizes.call($);
+                if(this.options.debug) console.log('resolve')
 
                 $doc.on('mousedown', mouseDownHandlerBind);
                 $doc.on('mouseup', mouseUpHandlerBind);
                 $doc.on('resize', setSizes.bind($));
             })
-            .catch((src) => {
-                this.destroy();
-                return sendError(src + ' image unable to download');
+            .catch((cb) => {
+                if(this.options.debug) console.log('reject')
+                // if($.options.debug) cb();
+                return this.destroy();
             })
     }
 

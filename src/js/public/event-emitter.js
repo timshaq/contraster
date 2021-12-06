@@ -1,5 +1,3 @@
-import sendError from "../helpers/sendError";
-
 export function on(name, listener) {
     if (!this.eventsListeners[name]) {
         this.eventsListeners[name] = [];
@@ -10,7 +8,7 @@ export function on(name, listener) {
 
 export function removeOn(name, listenerToRemove) {
     if (!this.eventsListeners[name]) {
-        return sendError("Can't remove a listener. Event \"" + name + "\" doesn't exits.");
+        return;
     }
 
     function filterListeners(listener) {
