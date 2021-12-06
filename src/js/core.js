@@ -32,6 +32,7 @@ function BeforeAfter() {
         },
         cursorGrab: false,
         className: false,
+        separatorPosition: 50
     };
 
     if (arguments[0] && typeof arguments[0] === "object") {
@@ -59,7 +60,7 @@ function BeforeAfter() {
             .catch((cb) => {
                 if(this.options.debug) console.log('reject')
                 // if($.options.debug) cb();
-                return this.destroy();
+                this.destroy();
             })
     }
 
@@ -72,6 +73,13 @@ function BeforeAfter() {
             $doc.removeOn('resize', setSizes.bind($));
         }
         $.emit('destroy');
+    }
+
+    this.setSeparatorPosition = function(percent) {
+        console.log($)
+        $.options.separatorPosition = percent;
+        setSizes.call($);
+        $.emit('setPosition');
     }
 
     if(this.options.init) this.init();

@@ -5,7 +5,7 @@
 * diagonal
 * free position
 * custom classes
-* startSeparatorPosition
+* startSeparatorPosition (diagonal)
 * setPosition()
 * getSlides
 * getHeight - ?

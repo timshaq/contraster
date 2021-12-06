@@ -1,4 +1,3 @@
-import disableScroll from "../helpers/disableScroll";
 import $doc from '../document-emitter';
 
 function mouseMoveHandler(event) {

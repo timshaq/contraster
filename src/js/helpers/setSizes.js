@@ -4,10 +4,9 @@ function setSizes() {
 
     switch (this.options.direction) {
         case 'horizontal':
-            console.log(this.container.offsetHeight/2)
             this.beforeWrapper.style.cssText = `height: ${this.container.offsetHeight/2}px;`;
             this.beforeElement.style.height = this.container.offsetHeight + 'px';
-            this.separator.style.cssText = `top: ${this.container.offsetHeight/2}px;`;
+            this.separator.style.cssText = `top: ${this.container.offsetHeight/(100/this.options.separatorPosition)}px;`;
             break;
         case 'diagonal':
             // const deg = -45;
@@ -54,7 +53,7 @@ function setSizes() {
         case 'vertical':
         default:
             this.beforeWrapper.style.cssText = `width: ${this.container.offsetWidth/2}px;`;
-            this.separator.style.cssText = `left: ${this.container.offsetWidth/2}px;`;
+            this.separator.style.cssText = `left: ${this.container.offsetWidth/(100/this.options.separatorPosition)}px;`;
             break;
     }
 

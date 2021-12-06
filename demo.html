@@ -119,17 +119,14 @@ document.addEventListener('DOMContentLoaded', function(){
 
     var horizontal = new BeforeAfter({
         container: '#horizontal',
-        direction: 'horizontal',
+        direction: 'vertical',
         cursorGrab: true,
+        separatorPosition: 50,
     });
     // horizontal.on('buildOut', () => console.log('buildOut'))
-
-    var horizontal = new BeforeAfter({
-        container: '#test',
-        direction: 'horizontal',
-        cursorGrab: true,
-    });
-
+    setTimeout(function() {
+        horizontal.setSeparatorPosition(10)
+    }, 3000)
 
     var diagonal = new BeforeAfter({
         'separator': {
@@ -138,6 +135,7 @@ document.addEventListener('DOMContentLoaded', function(){
         'container': '#diagonal',
         'className': 'test-container-css-name',
         'direction': 'diagonal',
+        separatorPosition: 70
     });
 
     var vertical = new BeforeAfter({
