@@ -10,7 +10,6 @@ function setSizes() {
             this.separator.style.cssText = `top: ${h_pos}px;`;
             break;
         case 'diagonal':
-            // const deg = -45;
             const w = this.container.offsetWidth;
             const h = this.container.offsetHeight;
             const dw = Math.sqrt(w*w+h*h);
@@ -18,19 +17,7 @@ function setSizes() {
             const b = Math.atan(h/w)*180/Math.PI;
             const deg = -(90 - Math.atan(h/w)*180/Math.PI);
             const deg2 = deg * (-1);
-            const sepDeg = a+b
-            console.log(
-                `
-                w: ${w},
-                h: ${h},
-                dw: ${dw},
-                a: ${a},
-                b: ${b},
-                deg: ${deg},
-                deg2: ${deg2},
-                sepDeg: ${sepDeg}
-                `
-            )
+            const sepDeg = a+b;
             this.beforeWrapper.style.cssText = `
                 width: ${2*w*this.options.separatorPosition/100}px;
                 height: ${h}px;

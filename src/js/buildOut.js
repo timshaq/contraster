@@ -37,6 +37,7 @@ function build(resolve, reject) {
     this.beforeElement.onload = checkComplete;
     this.beforeElement.onerror = reject;
     this.beforeElement.src = this.container.getAttribute('data-before');
+    this.container.removeAttribute('data-before');
     this.beforeWrapper.append(this.beforeElement);
 
     this.afterWrapper = document.createElement('DIV');
@@ -46,6 +47,7 @@ function build(resolve, reject) {
     this.afterElement.onload = checkComplete;
     this.afterElement.onerror = reject;
     this.afterElement.src = this.container.getAttribute('data-after');
+    this.container.removeAttribute('data-after');
     this.afterWrapper.append(this.afterElement);
 
     this.separator = document.createElement('DIV');

@@ -66,6 +66,8 @@ function BeforeAfter() {
 
     this.destroy = function() {
         if($.container) {
+            $.container.setAttribute('data-before', this.beforeElement.src);
+            $.container.setAttribute('data-after', this.afterElement.src);
             $.container.innerHTML = '';
             $.container.removeAttribute('class');
             $doc.removeOn('mousedown', mouseDownHandlerBind);

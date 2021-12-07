@@ -126,6 +126,7 @@ document.addEventListener('DOMContentLoaded', function(){
     horizontal.on('buildOut', () => console.log('buildOut'))
     setTimeout(function() {
         horizontal.setSeparatorPosition(10)
+        // horizontal.destroy()
     }, 3000)
 
     var diagonal = new BeforeAfter({

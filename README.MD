@@ -1,6 +1,5 @@
 # BeforeAfter
 ## 0.0.1
-* all direction to deg translation
 * free position
 * custom classes
 * getSlides
@@ -19,6 +18,8 @@
 * video - ?
 * synchronous movement
 * cursor grab
+* direction "visor" - transform origin
+* all direction to deg translation - ?
 
 ## Finished:
 * touch support: disable scroll when slider active
