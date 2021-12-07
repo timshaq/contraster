@@ -1,10 +1,10 @@
-import getElement from "./getElement";
+import getElement from "../getElement";
 import {
-    AFTER_ELEMENT_CLASS_NAME, AFTER_WRAPPER_CLASS_NAME,
+    AFTER_WRAPPER_CLASS_NAME,
     BEFORE_WRAPPER_CLASS_NAME,
     CONTAINER_CLASS_NAME, CONTAINER_DIAGONAL_CLASS_NAME, CONTAINER_HORIZONTAL_CLASS_NAME, CONTAINER_SQUARE_CLASS_NAME,
     SEPARATOR_ELEMENT_CLASS_NAME
-} from "./css-names";
+} from "../css-names";
 
 function getContainerClassName() {
     switch(this.options.direction) {

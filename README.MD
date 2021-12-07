@@ -1,10 +1,6 @@
 # BeforeAfter
 ## 0.0.1
-* free position
 * custom classes
-* getSlides
-* getHeight - ?
-* getWidth - ?
 * demo page
 * API page
 ## 0.0.2
@@ -12,7 +8,10 @@
 * breakpoints
 * animation (loading)
 * direction deg
+* changeSlides
+* set src from js
 ## Need:
+* drag and drop
 * light gallery
 * mouseWheel - ?
 * video - ?

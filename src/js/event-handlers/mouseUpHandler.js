@@ -1,7 +1,4 @@
-import $doc from "../document-emitter";
-
-function mouseUpHandler($, mouseMoveHandler, event) {
-    console.log('up')
+function mouseUpHandler($, $doc, mouseMoveHandler) {
     $doc.removeOn('mousemove', mouseMoveHandler);
     $.separator.classList.remove($.options.separator.activeClass);
 }

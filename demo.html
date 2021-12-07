@@ -88,21 +88,21 @@
         </div>
 
         <div>
-            <div id="nullImgTest"
+            <div id="vertical"
                  data-before="./img/ba-2-1.jpg"
                  data-after="./img/ba-2-2.jpg">
             </div>
         </div>
 
         <div>
-            <div id="vertical"
-                 data-before="./img/ba-2-1asd.jpg"
-                 data-after="./img/ba-2-2.jpg">
+            <div id="diagonal"
+                 data-before="./img/ba-1-1.jpg"
+                 data-after="./img/ba-1-2.jpg">
             </div>
         </div>
 
         <div>
-            <div id="diagonal"
+            <div id="ba3"
                  data-before="./img/ba-1-1.jpg"
                  data-after="./img/ba-1-2.jpg">
             </div>
@@ -119,13 +119,13 @@ document.addEventListener('DOMContentLoaded', function(){
 
     var horizontal = new BeforeAfter({
         container: '#horizontal',
-        direction: 'diagonal',
+        direction: 'horizontal',
         // cursorGrab: true,
         separatorPosition: 50,
+        freePosition: true,
     });
-    horizontal.on('buildOut', () => console.log('buildOut'))
     setTimeout(function() {
-        horizontal.setSeparatorPosition(10)
+        // horizontal.setSeparatorPosition(10)
         // horizontal.destroy()
     }, 3000)
 
@@ -136,7 +136,6 @@ document.addEventListener('DOMContentLoaded', function(){
         'container': '#diagonal',
         'className': 'test-container-css-name',
         'direction': 'diagonal',
-        separatorPosition: 70
     });
 
     var vertical = new BeforeAfter({
@@ -149,14 +148,14 @@ document.addEventListener('DOMContentLoaded', function(){
 
     var separatorInnerHTML = "<span class=\"span1\"></span><span class=\"span2\"></span><span class=\"span3\"></span>";
 
-    // var ba3 = new BeforeAfter({
-    //     'container': '#ba3',
-    //     'className': 'test-container-css-name',
-    //     'separator': {
-    //         'class': 'separator-custom-inner',
-    //         'innerHTML': separatorInnerHTML,
-    //     },
-    // });
+    var ba3 = new BeforeAfter({
+        'container': '#ba3',
+        'className': 'test-container-css-name',
+        'separator': {
+            'class': 'separator-custom-inner',
+            'innerHTML': separatorInnerHTML,
+        },
+    });
 
 })
 </script>

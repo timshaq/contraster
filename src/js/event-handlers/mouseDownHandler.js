@@ -1,7 +1,4 @@
-import $doc from "../document-emitter";
-
-function mouseDownHandler($, mouseMoveHandler, event) {
-    console.log('down',event.button)
+function mouseDownHandler($, $doc, mouseMoveHandler, event) {
     if(event.button === 0 || event.touches) {
         const isSeparatorChildren = $.separatorChildren && $.separatorChildren.includes(event.target);
         if($.options.freePosition) {

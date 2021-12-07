@@ -1,7 +1,4 @@
 function setSizes() {
-    if(this.options.width) this.container.style.width = this.options.width + 'px';
-    if(this.options.height) this.container.style.height = this.options.height + 'px';
-
     switch (this.options.direction) {
         case 'horizontal':
             const h_pos = this.container.offsetHeight*this.options.separatorPosition/100;
@@ -47,6 +44,7 @@ function setSizes() {
             this.separator.style.cssText = `left: ${v_pos}px;`;
             break;
     }
+    this.emit('setSizes');
 }
 
 export default setSizes;

@@ -47,8 +47,8 @@ function DocumentEmitter() {
         $.emit('mousedown', event);
     }
     function mousemove(event) {
-        // onscroll();
         $.emit('mousemove', event);
+        return ($.isContainerMove) ? event.preventDefault() : false;
     }
     document.addEventListener('mousedown', mousedown);
     document.addEventListener('mouseup', mouseup);
@@ -57,17 +57,10 @@ function DocumentEmitter() {
     document.addEventListener('touchstart', mousedown);
     document.addEventListener('touchend', mouseup);
     document.addEventListener('touchcancel', mouseup);
-    document.addEventListener('touchmove', mousemove);
-
-    function onscroll(event) {
-        return ($.isContainerMove) ? event.preventDefault() : false;
-    }
-
-    window.addEventListener('touchmove', onscroll, { passive: false });
+    document.addEventListener('touchmove', mousemove, { passive: false });
 
     window.addEventListener('resize', resize);
 }
 
-// export default DocumentEmitter;
 const $doc = new DocumentEmitter;
 export default $doc;

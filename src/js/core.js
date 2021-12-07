@@ -1,6 +1,6 @@
-import buildOut from './buildOut';
+import buildOut from './private/buildOut';
 import {SEPARATOR_ACTIVE_CLASS_NAME} from "./css-names";
-import setSizes from "./helpers/setSizes";
+import setSizes from "./private/setSizes";
 
 import mouseMoveHandler from "./event-handlers/mouseMoveHandler";
 import mouseDownHandler from "./event-handlers/mouseDownHandler";
@@ -19,8 +19,6 @@ function BeforeAfter() {
     this.separator = null;
     this.separatorChildren = null;
 
-    this.mouseScreenX = null;
-
     this.eventsListeners = {};
 
     const defaults = {
@@ -30,7 +28,7 @@ function BeforeAfter() {
         separator: {
             activeClass: SEPARATOR_ACTIVE_CLASS_NAME,
         },
-        cursorGrab: false,
+        // cursorGrab: false,
         className: false,
         separatorPosition: 50
     };
@@ -39,17 +37,16 @@ function BeforeAfter() {
         this.options = extendDefaults(defaults, arguments[0]);
     }
 
-    const mouseMoveHandlerBind = mouseMoveHandler.bind(this);
     const $ = this;
-    const mouseDownHandlerBind = (event) => mouseDownHandler($, mouseMoveHandlerBind, event)
-    const mouseUpHandlerBind = (event) => mouseUpHandler($, mouseMoveHandlerBind, event)
+    const mouseMoveHandlerBind = (event) => mouseMoveHandler($, $doc, event);
+    const mouseDownHandlerBind = (event) => mouseDownHandler($, $doc, mouseMoveHandlerBind, event)
+    const mouseUpHandlerBind = () => mouseUpHandler($, $doc, mouseMoveHandlerBind)
 
     this.init = function() {
-
         buildOut.call($)
             .then(() => {
                 if(!$.container) return;
-                this.emit('buildOut');
+                this.emit('init');
                 setSizes.call($);
                 if(this.options.debug) console.log('resolve')
 
@@ -57,9 +54,8 @@ function BeforeAfter() {
                 $doc.on('mouseup', mouseUpHandlerBind);
                 $doc.on('resize', setSizes.bind($));
             })
-            .catch((cb) => {
+            .catch(() => {
                 if(this.options.debug) console.log('reject')
-                // if($.options.debug) cb();
                 this.destroy();
             })
     }
