@@ -1,15 +1,18 @@
 const path = require('path');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const merge = require('lodash.merge');
+
+const babel_config_ie11 = require('./babel.config.ie11');
+const babel_config_es5 = require('./babel.config.es5');
+const babel_config_es6 = require('./babel.config.es6');
+
 const CompressionPlugin = require("compression-webpack-plugin");
 
 const NODE_ENV = process.env.NODE_ENV;
 const IS_DEV = NODE_ENV === 'development';
 
 const DEV_PLUGINS = [
-    new CleanWebpackPlugin()
 ];
 const PROD_PLUGINS = [
-    new CleanWebpackPlugin(),
     new CompressionPlugin({
         algorithm: "gzip",
         test: /\.js$/,
@@ -18,15 +21,10 @@ const PROD_PLUGINS = [
     })
 ]
 
-module.exports = {
-    target: 'es5',
+const common = {
     devtool: IS_DEV ? 'source-map' : false,
     mode: NODE_ENV ? NODE_ENV : 'development',
     watch: IS_DEV,
-    entry: {
-        "before-after": path.resolve(__dirname,'src/js/index.js'),
-        "before-after-ie11": path.resolve(__dirname,'src/js/index.ie11.js')
-    },
     output: {
         path: path.resolve(__dirname,'dist/js'),
         filename: '[name].min.js',
@@ -36,13 +34,22 @@ module.exports = {
         umdNamedDefine: true,
         chunkFormat: 'commonjs'
     },
+    plugins: IS_DEV ? DEV_PLUGINS : PROD_PLUGINS
+}
+
+const es6 = merge({...common}, {
+    target: 'es6',
+    entry: {
+        "before-after": path.resolve(__dirname,'src/js/index.js'),
+    },
     module: {
         rules: [
             {
                 test: /\.js?$/,
                 exclude: /node_modules/,
                 use: {
-                    loader: 'babel-loader'
+                    loader: 'babel-loader',
+                    options: babel_config_es6,
                 }
             },
             {
@@ -52,8 +59,63 @@ module.exports = {
                     "css-loader",
                     "less-loader"
                 ]
-            },
+            }
         ]
     },
-    plugins: IS_DEV ? DEV_PLUGINS : PROD_PLUGINS
-}
+})
+
+const es5 = merge({...common}, {
+    target: 'es5',
+    entry: {
+        "before-after.es5": path.resolve(__dirname,'src/js/index.js'),
+    },
+    module: {
+        rules: [
+            {
+                test: /\.js?$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader',
+                    options: babel_config_es5,
+                }
+            },
+            {
+                test: /\.less?$/,
+                use: [
+                    'style-loader',
+                    "css-loader",
+                    "less-loader"
+                ]
+            }
+        ]
+    },
+})
+
+const ie11 = merge({...common}, {
+    target: 'es5',
+    entry: {
+        "before-after.ie11": path.resolve(__dirname,'src/js/index.ie11.js')
+    },
+    module: {
+        rules: [
+            {
+                test: /\.js?$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader',
+                    options: babel_config_ie11,
+                }
+            },
+            {
+                test: /\.less?$/,
+                use: [
+                    'style-loader',
+                    "css-loader",
+                    "less-loader"
+                ]
+            }
+        ]
+    },
+})
+
+return IS_DEV ? module.exports = [es6] : module.exports = [clean, es6, es5, ie11];

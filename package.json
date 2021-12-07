@@ -23,6 +23,7 @@
     "cypress": "^9.1.0",
     "less": "^4.1.2",
     "less-loader": "^10.2.0",
+    "lodash.merge": "^4.6.2",
     "path": "^0.12.7",
     "style-loader": "^3.3.1",
     "webpack": "^5.64.2",
