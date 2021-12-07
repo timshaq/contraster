@@ -1,4 +1,5 @@
 const path = require('path');
+const del = require("del");
 const merge = require('lodash.merge');
 
 const babel_config_ie11 = require('./babel.config.ie11');
@@ -19,7 +20,16 @@ const PROD_PLUGINS = [
         threshold: 10240,
         minRatio: 0.8
     })
-]
+];
+
+const styleLoader = {
+    test: /\.less?$/,
+    use: [
+        'style-loader',
+        "css-loader",
+        "less-loader"
+    ]
+};
 
 const common = {
     devtool: IS_DEV ? 'source-map' : false,
@@ -35,7 +45,7 @@ const common = {
         chunkFormat: 'commonjs'
     },
     plugins: IS_DEV ? DEV_PLUGINS : PROD_PLUGINS
-}
+};
 
 const es6 = merge({...common}, {
     target: 'es6',
@@ -52,17 +62,10 @@ const es6 = merge({...common}, {
                     options: babel_config_es6,
                 }
             },
-            {
-                test: /\.less?$/,
-                use: [
-                    'style-loader',
-                    "css-loader",
-                    "less-loader"
-                ]
-            }
+            styleLoader
         ]
     },
-})
+});
 
 const es5 = merge({...common}, {
     target: 'es5',
@@ -79,17 +82,10 @@ const es5 = merge({...common}, {
                     options: babel_config_es5,
                 }
             },
-            {
-                test: /\.less?$/,
-                use: [
-                    'style-loader',
-                    "css-loader",
-                    "less-loader"
-                ]
-            }
+            styleLoader
         ]
     },
-})
+});
 
 const ie11 = merge({...common}, {
     target: 'es5',
@@ -106,16 +102,14 @@ const ie11 = merge({...common}, {
                     options: babel_config_ie11,
                 }
             },
-            {
-                test: /\.less?$/,
-                use: [
-                    'style-loader',
-                    "css-loader",
-                    "less-loader"
-                ]
-            }
+            styleLoader
         ]
     },
-})
+});
 
-return IS_DEV ? module.exports = [es6] : module.exports = [clean, es6, es5, ie11];
+del.sync([
+    path.resolve(__dirname,'dist/js/*'),
+    path.resolve(__dirname,'dist/css/*'),
+]);
+
+return IS_DEV ? module.exports = [es6] : module.exports = [es6, es5, ie11];
