@@ -1,12 +1,8 @@
 # BeforeAfter
 ## 0.0.1
-* horizontal
-* vertical
-* diagonal
+* all direction to deg translation
 * free position
 * custom classes
-* startSeparatorPosition (diagonal)
-* setPosition()
 * getSlides
 * getHeight - ?
 * getWidth - ?
@@ -29,3 +25,5 @@
 * only left click
 * IE11 support
 * not found image - destroy (fix bug)
+* startSeparatorPosition (diagonal)
+* setPosition()

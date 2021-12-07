@@ -4,9 +4,10 @@ function setSizes() {
 
     switch (this.options.direction) {
         case 'horizontal':
-            this.beforeWrapper.style.cssText = `height: ${this.container.offsetHeight/2}px;`;
+            const h_pos = this.container.offsetHeight*this.options.separatorPosition/100;
+            this.beforeWrapper.style.cssText = `height: ${h_pos}px;`;
             this.beforeElement.style.height = this.container.offsetHeight + 'px';
-            this.separator.style.cssText = `top: ${this.container.offsetHeight/(100/this.options.separatorPosition)}px;`;
+            this.separator.style.cssText = `top: ${h_pos}px;`;
             break;
         case 'diagonal':
             // const deg = -45;
@@ -18,11 +19,20 @@ function setSizes() {
             const deg = -(90 - Math.atan(h/w)*180/Math.PI);
             const deg2 = deg * (-1);
             const sepDeg = a+b
-            const center = {
-                x: w/2, y: h/2
-            }
+            console.log(
+                `
+                w: ${w},
+                h: ${h},
+                dw: ${dw},
+                a: ${a},
+                b: ${b},
+                deg: ${deg},
+                deg2: ${deg2},
+                sepDeg: ${sepDeg}
+                `
+            )
             this.beforeWrapper.style.cssText = `
-                width: ${w}px;
+                width: ${2*w*this.options.separatorPosition/100}px;
                 height: ${h}px;
                 overflow: hidden;
                 position: absolute;
@@ -36,28 +46,20 @@ function setSizes() {
                 transform-origin: inherit;
                 transform: skewX(${deg2}deg);
             `;
-            // this.beforeWrapper.style.cssText = `
-            //     height: ${this.container.offsetHeight}px;
-            //     width: ${this.container.offsetWidth}px;
-            //     -webkit-clip-path: polygon(0 0, 0 ${this.container.offsetHeight}px, ${this.container.offsetWidth/4}px ${this.container.offsetHeight}px, ${3*this.container.offsetWidth/4}px 0);
-            //     clip-path: polygon(0 0, 0 ${this.container.offsetHeight}px, ${this.container.offsetWidth/4}px ${this.container.offsetHeight}px, ${3*this.container.offsetWidth/4}px 0);
-            // `;
-            // this.beforeElement.style.height = this.container.offsetHeight + 'px';
             this.separator.style.cssText = `
                 width: ${dw}px;
-                top: ${this.container.offsetHeight/2}px;
-                left: ${this.container.offsetWidth/2}px;
+                top: ${this.container.offsetHeight*this.options.separatorPosition/100}px;
+                left: ${this.container.offsetWidth*this.options.separatorPosition/100}px;
                 transform: translate(-50%,-50%) rotate(${sepDeg}deg)
             `;
             break;
         case 'vertical':
         default:
-            this.beforeWrapper.style.cssText = `width: ${this.container.offsetWidth/2}px;`;
-            this.separator.style.cssText = `left: ${this.container.offsetWidth/(100/this.options.separatorPosition)}px;`;
+            const v_pos = this.container.offsetWidth*this.options.separatorPosition/100;
+            this.beforeWrapper.style.cssText = `width: ${v_pos}px;`;
+            this.separator.style.cssText = `left: ${v_pos}px;`;
             break;
     }
-
-    // this.beforeElement.style.width = this.container.offsetWidth + 'px';
 }
 
 export default setSizes;

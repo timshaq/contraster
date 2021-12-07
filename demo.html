@@ -119,11 +119,11 @@ document.addEventListener('DOMContentLoaded', function(){
 
     var horizontal = new BeforeAfter({
         container: '#horizontal',
-        direction: 'vertical',
-        cursorGrab: true,
+        direction: 'diagonal',
+        // cursorGrab: true,
         separatorPosition: 50,
     });
-    // horizontal.on('buildOut', () => console.log('buildOut'))
+    horizontal.on('buildOut', () => console.log('buildOut'))
     setTimeout(function() {
         horizontal.setSeparatorPosition(10)
     }, 3000)

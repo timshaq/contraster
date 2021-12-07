@@ -76,7 +76,6 @@ function BeforeAfter() {
     }
 
     this.setSeparatorPosition = function(percent) {
-        console.log($)
         $.options.separatorPosition = percent;
         setSizes.call($);
         $.emit('setPosition');
