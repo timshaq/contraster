@@ -144,5 +144,5 @@ const style = {
         path.resolve(__dirname,'dist/css/*'),
     ]);
 })();
-module.exports = [ie11, style]
-// return IS_DEV ? module.exports = [es6, style] : module.exports = [es6, es5, ie11, style];
+
+return IS_DEV ? module.exports = [es6, style] : module.exports = [es6, es5, ie11, style];
