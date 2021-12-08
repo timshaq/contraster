@@ -29,8 +29,8 @@ function BeforeAfter() {
             activeClass: SEPARATOR_ACTIVE_CLASS_NAME,
         },
         // cursorGrab: false,
-        className: false,
-        separatorPosition: 50
+        className: null,
+        progress: 50
     };
 
     if (arguments[0] && typeof arguments[0] === "object") {
@@ -66,17 +66,17 @@ function BeforeAfter() {
             $.container.setAttribute('data-after', this.afterElement.src);
             $.container.innerHTML = '';
             $.container.removeAttribute('class');
-            $doc.removeOn('mousedown', mouseDownHandlerBind);
-            $doc.removeOn('mouseup', mouseUpHandlerBind);
-            $doc.removeOn('resize', setSizes.bind($));
+            $doc.off('mousedown', mouseDownHandlerBind);
+            $doc.off('mouseup', mouseUpHandlerBind);
+            $doc.off('resize', setSizes.bind($));
         }
         $.emit('destroy');
     }
 
-    this.setSeparatorPosition = function(percent) {
-        $.options.separatorPosition = percent;
+    this.setProgress = function(percent) {
+        $.options.progress = percent;
         setSizes.call($);
-        $.emit('setPosition');
+        $.emit('setProgress');
     }
 
     if(this.options.init) this.init();
@@ -85,7 +85,7 @@ function BeforeAfter() {
 
 // emmitter
 BeforeAfter.prototype.on = emitter.on;
-BeforeAfter.prototype.removeOn = emitter.removeOn;
+BeforeAfter.prototype.off = emitter.off;
 BeforeAfter.prototype.emit = emitter.emit;
 
 export default BeforeAfter;

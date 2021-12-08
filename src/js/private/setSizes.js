@@ -1,7 +1,7 @@
 function setSizes() {
     switch (this.options.direction) {
         case 'horizontal':
-            const h_pos = this.container.offsetHeight*this.options.separatorPosition/100;
+            const h_pos = this.container.offsetHeight*this.options.progress/100;
             this.beforeWrapper.style.cssText = `height: ${h_pos}px;`;
             this.beforeElement.style.height = this.container.offsetHeight + 'px';
             this.separator.style.cssText = `top: ${h_pos}px;`;
@@ -16,7 +16,7 @@ function setSizes() {
             const deg2 = deg * (-1);
             const sepDeg = a+b;
             this.beforeWrapper.style.cssText = `
-                width: ${2*w*this.options.separatorPosition/100}px;
+                width: ${2*w*this.options.progress/100}px;
                 height: ${h}px;
                 overflow: hidden;
                 position: absolute;
@@ -32,14 +32,14 @@ function setSizes() {
             `;
             this.separator.style.cssText = `
                 width: ${dw}px;
-                top: ${this.container.offsetHeight*this.options.separatorPosition/100}px;
-                left: ${this.container.offsetWidth*this.options.separatorPosition/100}px;
+                top: ${this.container.offsetHeight*this.options.progress/100}px;
+                left: ${this.container.offsetWidth*this.options.progress/100}px;
                 transform: translate(-50%,-50%) rotate(${sepDeg}deg)
             `;
             break;
         case 'vertical':
         default:
-            const v_pos = this.container.offsetWidth*this.options.separatorPosition/100;
+            const v_pos = this.container.offsetWidth*this.options.progress/100;
             this.beforeWrapper.style.cssText = `width: ${v_pos}px;`;
             this.separator.style.cssText = `left: ${v_pos}px;`;
             break;

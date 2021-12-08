@@ -6,7 +6,7 @@ export function on(name, listener) {
     this.eventsListeners[name].push(listener);
 }
 
-export function removeOn(name, listenerToRemove) {
+export function off(name, listenerToRemove) {
     if (!this.eventsListeners[name]) {
         return;
     }

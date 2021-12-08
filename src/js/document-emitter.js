@@ -16,7 +16,7 @@ function DocumentEmitter() {
 
         $.eventsListeners[name].push(listener);
     }
-    $.removeOn = function(name, listenerToRemove) {
+    $.off = function(name, listenerToRemove) {
         if (!$.eventsListeners[name]) return;
 
         function filterListeners(listener) {
