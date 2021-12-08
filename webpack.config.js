@@ -81,7 +81,12 @@ const es5 = merge({...common}, {
 const ie11 = merge({...common}, {
     target: 'es5',
     entry: {
-        "before-after.ie11": path.resolve(__dirname,'src/js/index.ie11.js')
+        "before-after.ie11": [
+            "core-js/stable",
+            "regenerator-runtime/runtime",
+            path.resolve(__dirname,"src/js/pollyfils/append.js"),
+            path.resolve(__dirname,'src/js/index.js')
+        ]
     },
     module: {
         rules: [
@@ -139,5 +144,5 @@ const style = {
         path.resolve(__dirname,'dist/css/*'),
     ]);
 })();
-
-return IS_DEV ? module.exports = [es6, style] : module.exports = [es6, es5, ie11, style];
+module.exports = [ie11, style]
+// return IS_DEV ? module.exports = [es6, style] : module.exports = [es6, es5, ie11, style];
