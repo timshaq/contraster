@@ -6,7 +6,7 @@
 img {
     vertical-align: middle;
 }
-.before-after {
+.contraster {
     position: relative;
     overflow: hidden;
     width: 100%;
@@ -50,13 +50,13 @@ img {
         left: 0;
         z-index: 3;
         transition: opacity .4s linear;
-        &.before-after-active-separator {
+        &.contraster-active-separator {
             opacity: 0;
             transition: opacity .4s linear;
         }
     }
     &.horizontal {
-        & .before-after-wrapper-before {
+        & .contraster-wrapper-before {
             width: 100%;
             height: 50%;
             & img {
@@ -64,7 +64,7 @@ img {
                 height: 100%;
             }
         }
-        & .before-after-separator {
+        & .contraster-separator {
             width: 100%;
             height: 10px;
             transform: translateY(-50%);
@@ -74,14 +74,14 @@ img {
             left: 0;
             z-index: 3;
             transition: opacity .4s linear;
-            &.before-after-active-separator {
+            &.contraster-active-separator {
                 opacity: 0;
                 transition: opacity .4s linear;
             }
         }
     }
     &.diagonal {
-        & .before-after-separator {
+        & .contraster-separator {
             width: 100%;
             height: 10px;
             transform: translate(-50%,-50%) ;
@@ -91,14 +91,14 @@ img {
             left: 0;
             z-index: 3;
             transition: opacity .4s linear;
-            &.before-after-active-separator {
+            &.contraster-active-separator {
                 opacity: 0;
                 transition: opacity .4s linear;
             }
         }
     }
     //&.square {
-    //    & .before-after-separator {
+    //    & .contraster-separator {
     //        width: 50%;
     //        height: 10px;
     //        transform: translateY(-50%);
@@ -108,7 +108,7 @@ img {
     //        left: 0;
     //        z-index: 3;
     //        transition: opacity .4s linear;
-    //        &.before-after-active-separator {
+    //        &.contraster-active-separator {
     //            opacity: 1;
     //            transition: opacity .4s linear;
     //        }

@@ -10,7 +10,7 @@ import extendDefaults from "./helpers/extendDefaults";
 import $doc from './document-emitter';
 import * as emitter from "./public/event-emitter";
 
-function BeforeAfter() {
+function Contraster() {
     this.container = null;
 
     this.beforeWrapper = null;
@@ -84,8 +84,8 @@ function BeforeAfter() {
 }
 
 // emmitter
-BeforeAfter.prototype.on = emitter.on;
-BeforeAfter.prototype.off = emitter.off;
-BeforeAfter.prototype.emit = emitter.emit;
+Contraster.prototype.on = emitter.on;
+Contraster.prototype.off = emitter.off;
+Contraster.prototype.emit = emitter.emit;
 
-export default BeforeAfter;
+export default Contraster;

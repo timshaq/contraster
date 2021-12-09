@@ -31,7 +31,7 @@ const common = {
     output: {
         path: path.resolve(__dirname,'dist/js'),
         filename: '[name].min.js',
-        library: 'BeforeAfter',
+        library: 'Contraster',
         libraryTarget: "umd",
         libraryExport: "default",
         umdNamedDefine: true,
@@ -43,7 +43,7 @@ const common = {
 const es6 = merge({...common}, {
     target: 'es6',
     entry: {
-        "before-after": path.resolve(__dirname,'src/js/index.js'),
+        "contraster": path.resolve(__dirname,'src/js/index.js'),
     },
     module: {
         rules: [
@@ -62,7 +62,7 @@ const es6 = merge({...common}, {
 const es5 = merge({...common}, {
     target: 'es5',
     entry: {
-        "before-after.es5": path.resolve(__dirname,'src/js/index.js'),
+        "contraster.es5": path.resolve(__dirname,'src/js/index.js'),
     },
     module: {
         rules: [
@@ -81,7 +81,7 @@ const es5 = merge({...common}, {
 const ie11 = merge({...common}, {
     target: 'es5',
     entry: {
-        "before-after.ie11": [
+        "contraster.ie11": [
             "core-js/stable",
             "regenerator-runtime/runtime",
             path.resolve(__dirname,"src/js/pollyfils/append.js"),
@@ -106,7 +106,7 @@ const style = {
     mode: NODE_ENV ? NODE_ENV : 'development',
     watch: IS_DEV,
     entry: {
-        "before-after": path.resolve(__dirname,'src/less/index.less')
+        "contraster": path.resolve(__dirname,'src/less/index.less')
     },
     output: {
         path: path.resolve(__dirname,'dist/css'),

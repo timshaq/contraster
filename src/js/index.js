@@ -1,3 +1,3 @@
-import BeforeAfter from './core';
+import Contraster from './core';
 
-export default BeforeAfter;
+export default Contraster;

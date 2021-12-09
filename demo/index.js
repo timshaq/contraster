@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function(){
-    var horizontal = new BeforeAfter({
+    var horizontal = new Contraster({
         container: '#horizontal',
         direction: 'horizontal',
         // cursorGrab: true,
@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function(){
         // horizontal.destroy()
     }, 3000)
 
-    var diagonal = new BeforeAfter({
+    var diagonal = new Contraster({
         'separator': {
             'class': 'custom-separator',
         },
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function(){
         'direction': 'diagonal',
     });
 
-    var vertical = new BeforeAfter({
+    var vertical = new Contraster({
         'container': '#vertical',
         'className': 'test-container-css-name',
         'direction': 'vertical',
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
     var separatorInnerHTML = "<span class=\"span1\"></span><span class=\"span2\"></span><span class=\"span3\"></span>";
 
-    var ba3 = new BeforeAfter({
+    var ba3 = new Contraster({
         'container': '#ba3',
         'className': 'test-container-css-name',
         'separator': {

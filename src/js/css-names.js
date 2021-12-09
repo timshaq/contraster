@@ -1,4 +1,4 @@
-export var PLUGIN_CSS_NAME = 'before-after';
+export var PLUGIN_CSS_NAME = 'contraster';
 export var CONTAINER_CLASS_NAME = PLUGIN_CSS_NAME;// + '-container';
 
 export var CONTAINER_HORIZONTAL_CLASS_NAME = PLUGIN_CSS_NAME + ' horizontal';//'-container-horizontal';

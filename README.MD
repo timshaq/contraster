@@ -1,4 +1,4 @@
-# BeforeAfter
+# Contraster
 ## 0.0.1
 * custom classes
 * demo page
