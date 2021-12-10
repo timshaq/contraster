@@ -25,7 +25,7 @@ const common = {
     watch: IS_DEV,
     output: {
         path: path.resolve(__dirname,'dist'),
-        filename: '[name].min.js',
+        filename: '[name].js',
         library: 'Contraster',
         libraryTarget: "umd",
         libraryExport: "default",
@@ -112,7 +112,7 @@ const style = {
     plugins: [
         new MiniCssExtractPlugin({
             linkType: "text/css",
-            filename: "[name].min.css",
+            filename: "[name].css",
         }),
         new EventHooksPlugin({
             "done": new PromiseTask(async () => {
