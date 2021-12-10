@@ -178,9 +178,9 @@ const mySlider = new BeforeAfter({
 | init        | \-                               | Initialize slider after destroy or with parameter init: false |
 | destroy     | \-                               | Destroy slider                                                |
 | setProgress | percent                          | percent \- number ([example](#setting-progress))                                        |
-| on          | "[event](/docs/events), handler" | Add event handler                                             |
-| off         | "[event](/docs/events), handler" | Remove event handler                                          |
-| emit        | "[event](/docs/events), args"    | Fire event on instance                                        |
+| on          | "[event](#events), handler" | Add event handler                                             |
+| off         | "[event](#events), handler" | Remove event handler                                          |
+| emit        | "[event](#events), args"    | Fire event on instance                                        |
 
 ### Examples
 
