@@ -216,7 +216,7 @@ slider.setProgress(30); // will set progress = 30%
 ```
 
 #### Fire event
-You can look **all default events on the [Events](/docs/events) page.**
+You can look **all default events on the [Events](#events) paragraph.**
 ```js
 slider.emit('your-event');
 ```
