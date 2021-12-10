@@ -28,7 +28,9 @@ const slider = new Contraster({
 
 If you want to use library assets locally, you can directly download CSS and JS files from [unpkg.com](https://unpkg.com/browse/contraster/)
 Also support versions:
+<br>
 [Contraster ES5](https://unpkg.com/browse/contraster-es5/)
+<br>
 [Contraster IE11](https://unpkg.com/browse/contraster-ie11/)
 
 ### Add styles
