@@ -1,7 +1,7 @@
 {
   "name": "contraster",
   "version": "0.1.0",
-  "description": "",
+  "description": "New JS library for create a before-after effect",
   "main": "dist/contraster.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack",
@@ -12,6 +12,19 @@
     "type": "git",
     "url": "git+https://github.com/timshaq/contraster.git"
   },
+  "keywords": [
+    "contraster",
+    "slider",
+    "before after",
+    "before after image",
+    "before",
+    "after",
+    "swipe",
+    "touch",
+    "ios",
+    "mobile",
+    "plugin"
+  ],
   "author": "timshaq",
   "license": "MIT",
   "bugs": {
