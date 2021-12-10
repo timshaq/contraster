@@ -1,14 +1,15 @@
 # Contraster
 
-a project description
+Vanilla JS library for create before-after effect.
 
+![preview](https://github.com/timshaq/contraster/tree/main/img/preview.jpg?raw=true)
 
 ## Installation
 
 ### Install from NPM
 
 ```
-npm install npm i contraster
+npm i contraster
 ```
 
 ```js
