@@ -1,15 +1,23 @@
 {
   "name": "contraster",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "",
   "main": "dist/contraster.js",
   "scripts": {
-    "build:dev": "cross-env NODE_ENV=development webpack",
-    "build:prod": "cross-env NODE_ENV=production webpack",
+    "dev": "cross-env NODE_ENV=development webpack",
+    "prod": "cross-env NODE_ENV=production webpack",
     "test": "cypress open"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/timshaq/contraster.git"
+  },
   "author": "timshaq",
-  "license": "ISC",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/timshaq/contraster/issues"
+  },
+  "homepage": "https://github.com/timshaq/contraster#readme",
   "postcss": {
     "stage": 0,
     "plugins": {

@@ -57,7 +57,7 @@ const recursClicks = (position, clickPositionY, separatorStartTop, step, sliderH
 
 describe('Page Response', () => {
     it('visit', () => {
-        cy.visit('http://test.56.shakirov.sand/demo.html');
+        cy.visit('http://test.56.shakirov.sand/test.html');
     })
 })
 

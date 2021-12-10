@@ -1,29 +1,31 @@
 # Contraster
-## 0.0.1
-* custom classes
-* demo page
-* API page
-## 0.0.2
-* autoSlide
-* breakpoints
-* animation (loading)
-* direction deg
-* changeSlides
-* set src from js
-## Need:
-* drag and drop
-* light gallery
-* mouseWheel - ?
-* video - ?
-* synchronous movement
-* cursor grab
-* direction "visor" - transform origin
-* all direction to deg translation - ?
 
-## Finished:
-* touch support: disable scroll when slider active
-* only left click
-* IE11 support
-* not found image - destroy (fix bug)
-* startSeparatorPosition (diagonal)
-* setPosition()
+a project description
+
+## Installation
+
+installation process
+
+## Usage
+
+usage instructions
+
+## Contributing
+
+1. Fork it!
+2. Create your feature branch: `git checkout -b my-new-feature`
+3. Commit your changes: `git commit -am 'Add some feature'`
+4. Push to the branch: `git push origin my-new-feature`
+5. Submit a pull request
+
+## History
+
+### x.12.2021
+
+Publish v0.1
+
+## License
+
+[MIT License](https://github.com/timshaq/contraster/blob/main/LICENSE)
+
+Copyright (c) 2021 timshaq
