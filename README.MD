@@ -303,7 +303,7 @@ slider.off('init', callback);
 
 ## History
 
-### x.12.2021
+### 12.12.21
 
 Publish v0.1
 
