@@ -8,6 +8,8 @@ const babel_config_es6 = require('./cfg/babel.config.es6');
 
 const CompressionPlugin = require("compression-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const EventHooksPlugin = require("event-hooks-webpack-plugin");
+const { PromiseTask } = require('event-hooks-webpack-plugin/lib/tasks');
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
 const NODE_ENV = process.env.NODE_ENV;
@@ -29,7 +31,7 @@ const common = {
     mode: NODE_ENV ? NODE_ENV : 'development',
     watch: IS_DEV,
     output: {
-        path: path.resolve(__dirname,'dist/js'),
+        path: path.resolve(__dirname,'dist'),
         filename: '[name].min.js',
         library: 'Contraster',
         libraryTarget: "umd",
@@ -102,6 +104,8 @@ const ie11 = merge({...common}, {
     },
 });
 
+
+
 const style = {
     mode: NODE_ENV ? NODE_ENV : 'development',
     watch: IS_DEV,
@@ -109,13 +113,20 @@ const style = {
         "contraster": path.resolve(__dirname,'src/less/index.less')
     },
     output: {
-        path: path.resolve(__dirname,'dist/css'),
+        path: path.resolve(__dirname,'dist'),
         filename: 'style.js',
     },
     plugins: [
         new MiniCssExtractPlugin({
             linkType: "text/css",
             filename: "[name].min.css",
+        }),
+        new EventHooksPlugin({
+            "done": new PromiseTask(async () => {
+                const logg = del([
+                    path.resolve(__dirname,'dist/style.js'),
+                ]);
+            })
         })
     ],
     module: {
@@ -140,8 +151,7 @@ const style = {
 
 (async () => {
     del([
-        path.resolve(__dirname,'dist/js/*'),
-        path.resolve(__dirname,'dist/css/*'),
+        path.resolve(__dirname,'dist/*'),
     ]);
 })();
 
