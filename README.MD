@@ -1,8 +1,9 @@
 # Contraster
 
 Vanilla JS library for create before-after effect.
-
-![preview](https://github.com/timshaq/contraster/tree/main/img/preview.jpg?raw=true)
+<p align="center">
+    <img src="https://raw.githubusercontent.com/timshaq/contraster/main/img/preview.jpg" alt="preview"/>
+</p>
 
 ## Installation
 
