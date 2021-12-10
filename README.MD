@@ -155,6 +155,144 @@ const mySlider = new BeforeAfter({
 }
 ```
 
+## Parameters
+
+| Name                   | Type                                             | Default                                | Description                                                                |
+|------------------------|--------------------------------------------------|----------------------------------------|----------------------------------------------------------------------------|
+| container              | CSSSelector \| HTMLElement                       | null                                   | String with CSS selector or HTML element                                   |
+| className              | string                                           | null                                   | Class for slider container                                                 |
+| direction              | "vertical" \| "horizontal" \| "diagonal"         | "vertical"                             | "Slider direction\. Can be "vertical" or "horizontal" or "diagonal" |
+| init                   | boolean                                          | true                                   | Automatically initialize                                                   |
+| freePosition           | boolean                                          | false                                  | Handle interaction \(LMB click or touch\) not only with the separator      |
+| progressPosition       | number                                           | 50                                     | percent                                                                    |
+| separator              | object                                           | null                                   | separator options                                                          |
+| separator\.class       | string                                           | null                                   | Custom class for separator                                                 |
+| separator\.innerHTML   | string                                           | null                                   | Custom HTML in separator                                                   |
+| separator\.activeClass | string                                           | "before\-after\-active\-separator" | This class set when user interactive with slider                           |
+
+
+## Methods
+
+| Name        | Arguments                        | Description                                                   |
+|-------------|----------------------------------|---------------------------------------------------------------|
+| init        | \-                               | Initialize slider after destroy or with parameter init: false |
+| destroy     | \-                               | Destroy slider                                                |
+| setProgress | percent                          | percent \- number ([example](#setting-progress))                                        |
+| on          | "[event](/docs/events), handler" | Add event handler                                             |
+| off         | "[event](/docs/events), handler" | Remove event handler                                          |
+| emit        | "[event](/docs/events), args"    | Fire event on instance                                        |
+
+### Examples
+
+#### Initialize on demand
+Create slider with disable automatically initialize:
+```js
+const slider = new Contraster({
+    container: '#slider',
+    init: false
+});
+```
+
+Initialize slider when it took:
+```js
+slider.init();
+```
+
+#### Initialize after destroy
+
+Destroy slider:
+```js
+slider.destroy();
+```
+
+Initialize slider when it took:
+```js
+slider.init();
+```
+
+#### Setting progress
+```js
+slider.setProgress(30); // will set progress = 30%
+```
+
+#### Fire event
+You can look **all default events on the [Events](/docs/events) page.**
+```js
+slider.emit('your-event');
+```
+#### Event listener
+
+```js
+function myEventCallback(event) {
+    console.log('my event fire! ', event)
+}
+slider.emit('your-event', myEventCallback);
+```
+
+#### Remove event listener
+```js
+slider.off('your-event', myEventCallback);
+```
+
+# Events
+
+| Name        | Description                             |
+|-------------|-----------------------------------------|
+| init        | Event will fired after initialize       |
+| destroy     | Event will fired after destroy          |
+| setProgress | Event will fired after progress setting |
+| setSizes    | Event will fired after sizes setting    |
+
+### Examples
+
+#### Create slider:
+```js
+const slider = new Contraster({
+    container: '#slider',
+});
+```
+
+#### Add event listeners with "on" method:
+```js
+slider.on('init', function() {
+    alert('Slider was initialize!');
+})
+```
+
+```js
+slider.on('destroy', function() {
+    alert('Slider was destroy!');
+})
+```
+
+```js
+slider.on('setProgress', function() {
+    alert('Slider was change!');
+})
+```
+
+```js
+slider.on('setSizes', function() {
+    alert('Slider was set sizes!');
+})
+```
+#### Remove event listeners with "off" method:
+Create callback:
+
+```js
+function callback(event) {
+    console.log('Slider was initialize ', event);
+}
+```
+Add listener: 
+```js
+slider.on('init', callback);
+```
+Remove listener:
+```js
+slider.off('init', callback);
+```
+
 ## Contributing
 
 1. Fork it!
