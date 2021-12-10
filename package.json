@@ -47,7 +47,6 @@
     "@babel/runtime-corejs3": "^7.16.3",
     "autoprefixer": "^10.4.0",
     "babel-loader": "^8.2.3",
-    "compression-webpack-plugin": "^9.0.1",
     "core-js": "^3.19.2",
     "cross-env": "^7.0.3",
     "css-loader": "^6.5.1",

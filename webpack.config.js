@@ -6,7 +6,6 @@ const babel_config_ie11 = require('./cfg/babel.config.ie11');
 const babel_config_es5 = require('./cfg/babel.config.es5');
 const babel_config_es6 = require('./cfg/babel.config.es6');
 
-const CompressionPlugin = require("compression-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const EventHooksPlugin = require("event-hooks-webpack-plugin");
 const { PromiseTask } = require('event-hooks-webpack-plugin/lib/tasks');
@@ -18,12 +17,6 @@ const IS_DEV = NODE_ENV === 'development';
 const DEV_PLUGINS = [
 ];
 const PROD_PLUGINS = [
-    new CompressionPlugin({
-        algorithm: "gzip",
-        test: /\.js$/,
-        threshold: 10240,
-        minRatio: 0.8
-    })
 ];
 
 const common = {
