@@ -5,6 +5,14 @@ Vanilla JS library for create before-after effect.
     <img src="https://raw.githubusercontent.com/timshaq/contraster/main/img/preview.jpg" alt="preview"/>
 </p>
 
+## Demo
+
+* [Horizontal slider](https://codesandbox.io/s/contraster-0-1-es6-horizontal-3vk1j)
+* [Vertical slider](https://codesandbox.io/s/contraster-0-1-es6-vertical-tgyhe)
+* [Diagonal slider](https://codesandbox.io/s/contraster-0-1-es6-diagonal-3o3lk)
+* [Free position interact](https://codesandbox.io/s/contraster-0-1-es6-freeposition-4sd7n)
+* [Custom separators]()
+
 ## Installation
 
 ### Install from NPM
@@ -15,7 +23,7 @@ npm i contraster
 
 ```js
 import Contraster from "contraster";
-import "contraster-es5/contraster.css";
+import "contraster/contraster.css";
 ```
 
 ```js
@@ -27,10 +35,13 @@ const slider = new Contraster({
 ### Download assets
 
 If you want to use library assets locally, you can directly download CSS and JS files from [unpkg.com](https://unpkg.com/browse/contraster/)
+
 Also support versions:
-<br>
+
+
 [Contraster ES5](https://unpkg.com/browse/contraster-es5/)
-<br>
+
+
 [Contraster IE11](https://unpkg.com/browse/contraster-ie11/)
 
 ### Add styles
@@ -63,7 +74,7 @@ Also support versions:
 
 ```js
 // index.js
-const mySlider = new BeforeAfter({
+const mySlider = new Contraster({
     container: '#mySlider',
     direction: 'diagonal',
     freePosition: true,
@@ -115,7 +126,7 @@ const separatorInnerHTML = `
     <span class="span3"></span>
 `;
 
-const mySlider = new BeforeAfter({
+const mySlider = new Contraster({
     'separator': {
         'class': 'custom-separator',
         'innerHTML': separatorInnerHTML,
