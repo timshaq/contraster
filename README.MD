@@ -11,7 +11,7 @@ Vanilla JS library for create before-after effect.
 * [Vertical slider](https://codesandbox.io/s/contraster-0-1-es6-vertical-tgyhe)
 * [Diagonal slider](https://codesandbox.io/s/contraster-0-1-es6-diagonal-3o3lk)
 * [Free position interact](https://codesandbox.io/s/contraster-0-1-es6-freeposition-4sd7n)
-* [Custom separators]()
+* [Custom separators](https://codesandbox.io/s/contraster-0-1-es6-customseparator-dyz3l)
 
 ## Installation
 
